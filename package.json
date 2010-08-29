@@ -2,7 +2,7 @@
   "name": "pattern",
   "description": "Simple Prototype Objects as Patterns.",
   "tags": ["prototype","pattern","util","utility"],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Tim Caswell <tim@creationix.com>",
   "repository": {
     "type": "git",
@@ -10,5 +10,9 @@
   },
   "bugs": "http://github.com/creationix/pattern/issues",
   "engines": ["node >= 0.2.0"],
-  "main": "./lib/pattern.js"
+  "modules": {
+    "index": "lib/pattern.js",
+    "hash": "lib/pattern/hash.js",
+    "queue": "lib/pattern/queue.js"
+  }
 }
