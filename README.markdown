@@ -46,11 +46,9 @@ The `new()` function is available on any pattern that inherits from the base `Pa
 
 ## `pattern-hash` - Iterable Objects
 
-To install simply do `npm install pattern-hash`.
-
 Often in JavaScript you want an object that stores arbitrary keys to values and you want to be able to iterate over this.  ECMA5 added some nice functions to `Array` instances like `forEach()` and `map()`, but left these off of `Object` instances.  Since you don't want to change the `Object.prototype` directly, this `Hash` pattern is a great drop in replacement for plain objects that you treat as data containers.
 
-    var Hash = require('pattern-hash');
+    var Hash = require('pattern/hash');
 
 ### `Hash.new()` - Create a new hash
 
@@ -79,13 +77,11 @@ This works just like `Array.prototype.map`.  It build an array from the return v
 
 ## `pattern-queue` - Fast work queues
 
-To install simply do `npm install pattern-queue`.
-
 When you're writing a node server often you need to queue items so that they run in order later on.  Hopefully your queues don't get very large, but sometimes they just do. For this case you'll soon find out that JavaScript's built in `Array.prototype.shift` function is terribly slow for large arrays.
 
 This Pattern is a simple queue that uses some internal tricks to make `push()` and `shift()` calls fast at any size.
 
-    var Queue = require('pattern-queue');
+    var Queue = require('pattern/queue');
 
 ### `Queue.new()` - Make a new Queue
 

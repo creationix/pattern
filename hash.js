@@ -1,4 +1,4 @@
-var Pattern = require('../pattern');
+var Pattern = require('pattern');
 
 // A Hash is an interable object
 var Hash = module.exports = Object.create(Pattern, {

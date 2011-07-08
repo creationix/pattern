@@ -1,49 +1,26 @@
+// This is my proto library but without changing Object.prototype
+// Then only sub-objects of Pattern have the special properties.
 var Pattern = module.exports = Object.create(Object.prototype, {
 
   // Implement extend for easy prototypal inheritance
   extend: {value: function extend(obj) {
-    if (typeof obj !== 'object') throw new Error("Extend requires an object");
+    if (obj === undefined) return Object.create(this);
     obj.__proto__ = this;
-
-    // If there is no initialize function localally, clone the parent's one
-    if (!obj.hasOwnProperty("initialize")) {
-      Object.defineProperty(obj, 'initialize', {
-        value: cloneFunction(this.initialize)
-      });
-    }
-
-    // Link up the prototype
-    Object.defineProperty(obj.initialize, "prototype", {value: obj});
-
-    // Define a fast local new function
-    var args = [];
-    for (var i = 0, l = obj.initialize.length; i < l; i++) {
-      args.push('v' + i);
-    }
-    args.push('return new this.initialize(' + args.join(",") + ');');
-    Object.defineProperty(obj, "new", {value: Function.apply(null, args)});
-
-    // Object.freeze(obj); // Lock the prototype to enforce no changes
+    Object.freeze(obj); // Lock the prototype to enforce no changes
     return obj;
   }},
 
-  // There will always be a default constructor
-  initialize: {value: function initailize() {} },
+  // Implement new for easy self-initializing objects
+  new: {value: function new_() {
+    var obj = Object.create(this);
+    if (typeof obj.initialize !== 'function') return obj;
+
+    obj.initialize.apply(obj, arguments);
+    Object.seal(obj); // Lock the object down so the fields are static
+    return obj;
+  }}
 
 });
-// Add a hidden prototype link
-Object.defineProperty(Pattern.initialize, "prototype", {value: Pattern});
-
-function cloneFunction (fn) {
-  var args = [];
-  for (var i = 0, l = fn.length; i < l; i++) {
-    args.push('v' + i);
-  }
-  eval("var gen = function " + fn.name + "(" + args.join(", ") + ") {\n" +
-       "  return fn.call(" + (["this"].concat(args)).join(', ') + ");\n" +
-       "}");
-  return gen;
-}
 //
 //
 // var Rectangle = Pattern.extend({

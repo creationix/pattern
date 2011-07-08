@@ -1,4 +1,4 @@
-var Pattern = require('../pattern');
+var Pattern = require('pattern');
 
 // If a large number of writes gets queued up, the shift call normally
 // eats all the CPU.  This implementes a faster queue.
