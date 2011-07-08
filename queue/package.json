@@ -1,7 +1,7 @@
 {
-  "name": "pattern",
-  "description": "Simple Prototype Objects as Patterns.",
-  "tags": ["prototype","pattern","util","utility"],
+  "name": "pattern-queue",
+  "description": "Simple Prototype Objects as Patterns. Fast Queue prototype",
+  "tags": ["prototype","pattern","util","utility","queue"],
   "version": "0.2.0",
   "author": "Tim Caswell <tim@creationix.com>",
   "repository": {
@@ -10,5 +10,8 @@
   },
   "bugs": "http://github.com/creationix/pattern/issues",
   "engines": ["node >= 0.4.0"],
-  "main": "pattern.js"
+  "main": "queue.js",
+  "dependencies": {
+    "pattern": "0.2.0"
+  }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "pattern",
-  "description": "Simple Prototype Objects as Patterns.",
-  "tags": ["prototype","pattern","util","utility"],
+  "name": "pattern-hash",
+  "description": "Simple Prototype Objects as Patterns. Hash prototype",
+  "tags": ["prototype","pattern","util","utility","hash"],
   "version": "0.2.0",
   "author": "Tim Caswell <tim@creationix.com>",
   "repository": {
@@ -10,5 +10,8 @@
   },
   "bugs": "http://github.com/creationix/pattern/issues",
   "engines": ["node >= 0.4.0"],
-  "main": "pattern.js"
+  "main": "hash.js",
+  "dependencies": {
+    "pattern": "0.2.0"
+  }
 }

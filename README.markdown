@@ -8,7 +8,9 @@ Inspired by quotes like these and seeing the new power we have in ECMA5 I set ou
 
 Forget all you know about the distinction between classes and instances and enter the realm of prototypes.
 
-## `pattern.js` - The base for everything
+## `pattern` - The base for everything
+
+To install simply do `npm install pattern`.
 
 The first module you will need to learn is called `pattern.js`.  It implements the base prototype `Pattern`.  This prototype has two functions on it.  They are `new` and `extend`.
 
@@ -42,9 +44,13 @@ The `new()` function is available on any pattern that inherits from the base `Pa
     // Create an object based on the Rectangle pattern from above.
     var rect = Rectangle.new(3, 5);
 
-## `pattern/hash.js` - Iterable Objects
+## `pattern-hash` - Iterable Objects
+
+To install simply do `npm install pattern-hash`.
 
 Often in JavaScript you want an object that stores arbitrary keys to values and you want to be able to iterate over this.  ECMA5 added some nice functions to `Array` instances like `forEach()` and `map()`, but left these off of `Object` instances.  Since you don't want to change the `Object.prototype` directly, this `Hash` pattern is a great drop in replacement for plain objects that you treat as data containers.
+
+    var Hash = require('pattern-hash');
 
 ### `Hash.new()` - Create a new hash
 
@@ -71,11 +77,15 @@ This works just like `Array.prototype.map`.  It build an array from the return v
       return escape(key) + "=" + escape(value);
     }).join("&");
 
-## `pattern/queue.js` - Fast work queues
+## `pattern-queue` - Fast work queues
+
+To install simply do `npm install pattern-queue`.
 
 When you're writing a node server often you need to queue items so that they run in order later on.  Hopefully your queues don't get very large, but sometimes they just do. For this case you'll soon find out that JavaScript's built in `Array.prototype.shift` function is terribly slow for large arrays.
 
 This Pattern is a simple queue that uses some internal tricks to make `push()` and `shift()` calls fast at any size.
+
+    var Queue = require('pattern-queue');
 
 ### `Queue.new()` - Make a new Queue
 
